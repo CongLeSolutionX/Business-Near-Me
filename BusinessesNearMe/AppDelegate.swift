@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let mapVC = MapViewController()
     let searchVC = SearchViewController()
     
-    let searchNavigation = UINavigationController(rootViewController: searchVC)
-    let mapNC = UINavigationController(rootViewController: mapVC)
+    let searchNavController = UINavigationController(rootViewController: searchVC)
+    let mapNavController = UINavigationController(rootViewController: mapVC)
     
     let tabBarController = UITabBarController()
-    tabBarController.viewControllers = [searchNavigation, mapNC]
+    tabBarController.viewControllers = [searchNavController, mapNavController]
     
     window?.rootViewController = tabBarController
     
