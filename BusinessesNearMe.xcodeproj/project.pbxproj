@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		4C878F012649C70200ADD4AA /* BusinessSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F002649C70200ADD4AA /* BusinessSite.swift */; };
 		4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */; };
 		4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F082649CA9E00ADD4AA /* CellId.swift */; };
+		4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */; };
 		5C24121E4C861A9ABA16EF26 /* Pods_BusinessesNearMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0A529D3389A175CD1BC6F9 /* Pods_BusinessesNearMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		4C878F002649C70200ADD4AA /* BusinessSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSite.swift; sourceTree = "<group>"; };
 		4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4C878F082649CA9E00ADD4AA /* CellId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellId.swift; sourceTree = "<group>"; };
+		4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMapViewModel.swift; sourceTree = "<group>"; };
 		51F09800BB1A798841B46ECA /* Pods-BusinessesNearMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessesNearMe.release.xcconfig"; path = "Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe.release.xcconfig"; sourceTree = "<group>"; };
 		7F0A529D3389A175CD1BC6F9 /* Pods_BusinessesNearMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessesNearMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F179584B3F6F545ECF5AA8F2 /* Pods-BusinessesNearMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessesNearMe.debug.xcconfig"; path = "Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 				F179584B3F6F545ECF5AA8F2 /* Pods-BusinessesNearMe.debug.xcconfig */,
 				51F09800BB1A798841B46ECA /* Pods-BusinessesNearMe.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,6 +82,7 @@
 		4C878EE52649946200ADD4AA /* BusinessesNearMe */ = {
 			isa = PBXGroup;
 			children = (
+				4C878F0B2649FF2300ADD4AA /* ViewModels */,
 				4C878F072649CA2200ADD4AA /* View */,
 				4C878F062649CA0500ADD4AA /* Models */,
 				4C878F052649C9EB00ADD4AA /* ViewControllers */,
@@ -126,6 +128,14 @@
 				4C878F082649CA9E00ADD4AA /* CellId.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4C878F0B2649FF2300ADD4AA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F66CA38CDB4ED00F23221C16 /* Frameworks */ = {
@@ -251,6 +261,7 @@
 			files = (
 				4C878EFF2649C61600ADD4AA /* BusinessCell.swift in Sources */,
 				4C878EEB2649946200ADD4AA /* SearchViewController.swift in Sources */,
+				4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */,
 				4C878EFD2649C4D500ADD4AA /* BaseViewController.swift in Sources */,
 				4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */,
 				4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */,
