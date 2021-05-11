@@ -37,6 +37,7 @@ class MapViewController: BaseViewController {
   }
 }
 
+// MARK: - CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     // Print out the current locations
@@ -48,8 +49,7 @@ extension MapViewController: CLLocationManagerDelegate {
     let centerPoint = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     centerMap(on: centerPoint)
   }
-  
-  
+
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print("Error - locationManager: \(error.localizedDescription)")
   }
@@ -79,19 +79,6 @@ extension MapViewController: CLLocationManagerDelegate {
 
 // MARK: - Helper functions
 extension MapViewController {
-  
-  func setupMapView() {
-    view.addSubview(mapView)
-    mapView.translatesAutoresizingMaskIntoConstraints = false
-    
-    NSLayoutConstraint.activate([
-      mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      mapView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-      mapView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-      mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-    ])
-  }
-  
   func determineCurrentLocation() {
     
     locationManager.requestWhenInUseAuthorization()
@@ -107,7 +94,6 @@ extension MapViewController {
       mapView.setCenter(coor, animated: true)
     }
   }
-  
 }
 
 // MARK: - MKMapViewDelegate
@@ -116,7 +102,8 @@ extension MapViewController: MKMapViewDelegate {
     centerMap(on: userLocation.coordinate)
   }
   
-  func centerMap(on coordinate: CLLocationCoordinate2D) {
+  // MARK: Helper function for MKMapView
+  private func centerMap(on coordinate: CLLocationCoordinate2D) {
     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     
     let region = MKCoordinateRegion(center: coordinate, span: span)
@@ -125,29 +112,46 @@ extension MapViewController: MKMapViewDelegate {
     // Pass the coordiate of the current user's location and get the
     businessMapViewModel.fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
     
-    // Set up the drop pin
+    // Set up the drop pin for current user's location
     let annotation = MKPointAnnotation()
     annotation.coordinate = coordinate
     annotation.title = "Cong Le"
     annotation.subtitle = "Current location"
     mapView.addAnnotation(annotation)
   }
-//
-//  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//    guard let viewModel = annotation as? BusinessMapViewModel else {
-//      return nil
-//    }
-//    let identifier = "businessLocation"
-//    let annotationView: MKAnnotationView
-//    annotationView.canShowCallout = true
-//
-//    return annotationView
-//  }
+
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard let viewModel = annotation as? BusinessMapViewModel else {
+      return nil
+    }
+    let identifier = "businessLocation"
+    let annotationView: MKAnnotationView
+    
+    if let existingView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+      annotationView = existingView
+    } else {
+      annotationView = MKAnnotationView(annotation: viewModel as! MKAnnotation, reuseIdentifier: identifier)
+    }
+    
+    return annotationView
+  }
 }
 
 
 // MARK: - Setup UI Elements
 extension MapViewController {
+  
+  func setupMapView() {
+    view.addSubview(mapView)
+    mapView.translatesAutoresizingMaskIntoConstraints = false
+    
+    NSLayoutConstraint.activate([
+      mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      mapView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+      mapView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+      mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    ])
+  }
   
   func setupNavBar() {
     navigationItem.titleView = headerTitle

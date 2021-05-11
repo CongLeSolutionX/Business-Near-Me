@@ -14,7 +14,10 @@ public class BusinessMapViewModel {
   init(service: NetworkService = NetworkService()) {
     self.service = service
   }
-  
+}
+
+// MARK: - Parsing data and store it locally
+extension BusinessMapViewModel {
   func fetchYelpBusinesses(latitude: Double, longitude: Double) {
    // get the business around the current user's location
     service.fetchBusinesses(latitude: latitude, longitude: longitude) { result in
@@ -25,5 +28,24 @@ public class BusinessMapViewModel {
         print("Failed to get data from Yelp API with error: \(error.localizedDescription)")
       }
     }
+  }
+}
+
+// MARK: - Helper functions to access data
+extension BusinessMapViewModel {
+  func getBusinessTitle(_ index: Int) -> String {
+    return businesses[index].name ?? "This business does not have a name"
+  }
+  
+  func getBusinessRating(_ index: Int) -> Double {
+    return businesses[index].rating ?? 0.0
+  }
+  
+  func getBusinessLatitude(_ index: Int) -> Double {
+    return businesses[index].coordinates?.latitude ?? 0.0
+  }
+  
+  func getBusinessLongitude(_ index: Int) -> Double {
+    return businesses[index].coordinates?.longitude ?? 0.0
   }
 }
