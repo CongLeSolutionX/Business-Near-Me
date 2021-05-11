@@ -6,15 +6,12 @@
 //
 
 import MapKit
-import YelpAPI
 import CoreLocation
 
-public let YelpAPIKey = "uKD9DAyCNSie9pqJ77KMv7N1fRwU8B202P9ym9H1ztI3WDqGNvrfF_MkC2y9XRqiVWsWgLvjGoHOdBBn2ncKYoPFrEqRcUhEeYxWveRdUm69vZTmaya-HOe91FxZXnYx"
 
 class MapViewController: BaseViewController {
-  
-  private var businesses: [YLPBusiness] = []
-  private var client = YLPClient(apiKey: YelpAPIKey)
+  lazy var headerTitle = makeHeaderTitle()
+  private var businesses: [Business] = []
   private var locationManager = CLLocationManager()
   
   lazy var mapView:MKMapView = {
@@ -34,6 +31,7 @@ class MapViewController: BaseViewController {
     super.viewDidLoad()
     setupMapView()
     determineCurrentLocation()
+    setupNavBar()
     mapView.delegate = self
   }
 }
@@ -57,24 +55,24 @@ extension MapViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     switch status {
-      case .notDetermined:
-          locationManager.requestAlwaysAuthorization()
-          break
-      case .authorizedWhenInUse:
-          locationManager.startUpdatingLocation()
-          break
-      case .authorizedAlways:
-          locationManager.startUpdatingLocation()
-          break
-      case .restricted:
-          // restricted by e.g. parental controls. User can't enable Location Services
-          break
-      case .denied:
-          // user denied your app access to Location Services, but can grant access from Settings.app
-          break
-      default:
-          break
-      }
+    case .notDetermined:
+      locationManager.requestAlwaysAuthorization()
+      break
+    case .authorizedWhenInUse:
+      locationManager.startUpdatingLocation()
+      break
+    case .authorizedAlways:
+      locationManager.startUpdatingLocation()
+      break
+    case .restricted:
+      // restricted by e.g. parental controls. User can't enable Location Services
+      break
+    case .denied:
+      // user denied your app access to Location Services, but can grant access from Settings.app
+      break
+    default:
+      break
+    }
   }
 }
 
@@ -94,7 +92,7 @@ extension MapViewController {
   }
   
   func determineCurrentLocation() {
- 
+    
     locationManager.requestWhenInUseAuthorization()
     // if allowed, the app will get the current location of the user
     if CLLocationManager.locationServicesEnabled() {
@@ -107,24 +105,23 @@ extension MapViewController {
     if let coor = mapView.userLocation.location?.coordinate {
       mapView.setCenter(coor, animated: true)
     }
-    
   }
+  
 }
 
-// MARK: MKMapViewDelegate
+// MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
     centerMap(on: userLocation.coordinate)
   }
   
-  private func centerMap(on coordinate: CLLocationCoordinate2D) {
+  func centerMap(on coordinate: CLLocationCoordinate2D) {
     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     
     let region = MKCoordinateRegion(center: coordinate, span: span)
     mapView.setRegion(region, animated: true)
     
-    searchForBusinesses()
-    
+   fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
     // Set up the drop pin
     let annotation = MKPointAnnotation()
     annotation.coordinate = coordinate
@@ -133,7 +130,77 @@ extension MapViewController: MKMapViewDelegate {
     mapView.addAnnotation(annotation)
   }
   
-  private func searchForBusinesses() {
+  func fetchYelpBusinesses(latitude: Double, longitude: Double) {
+   
+  
+    let apikey = "uKD9DAyCNSie9pqJ77KMv7N1fRwU8B202P9ym9H1ztI3WDqGNvrfF_MkC2y9XRqiVWsWgLvjGoHOdBBn2ncKYoPFrEqRcUhEeYxWveRdUm69vZTmaya-HOe91FxZXnYx"
+    let url = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)")
+    guard let safeUrl = url else { return }
     
+    var requestUrl = URLRequest(url: safeUrl)
+    
+    requestUrl.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
+    requestUrl.httpMethod = "GET"
+    let session = URLSession.shared
+    
+    let task = session.dataTask(with: requestUrl) { [weak self] (dataReceived, response, error) in
+      if let error = error {
+        print("Handling error: \(error.localizedDescription)")
+        return
+      }
+      
+      if let httpResponse = response as? HTTPURLResponse,
+         !(200...299).contains(httpResponse.statusCode) {
+        print("Handling http response error code")
+      }
+      
+      if let data = dataReceived {
+        do {
+          let result = try JSONDecoder().decode(BussinessLocation.self, from: data)
+          print(result.businesses?.count)
+        } catch (let error) {
+          print("Handling error \(error.localizedDescription)")
+        }
+      }
+    }
+    
+    task.resume()
+  }
+ 
+  
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard let viewModel = annotation as? BusinessMapViewModel else {
+      return nil
+    }
+    let identifier = "businessLocation"
+    let annotationView: MKAnnotationView
+    
+    if let existingView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)  {
+      annotationView = existingView
+    } else {
+      annotationView = MKAnnotationView(annotation: viewModel, reuseIdentifier: identifier)
+    }
+    
+    annotationView.image = viewModel.image
+    annotationView.canShowCallout = true
+    
+    return annotationView
+  }
+}
+
+
+// MARK: - Setup UI Elements
+extension MapViewController {
+  
+  func setupNavBar() {
+    navigationItem.titleView = headerTitle
+  }
+  
+  private func makeHeaderTitle() ->  UILabel{
+    let title = UILabel()
+    title.text = "Businesses Near Me"
+    title.stylizeToCenter(alignment: .center)
+    title.font = UIFont.boldSystemFont(ofSize: 20.0)
+    return title
   }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: BaseViewController {
   
-  var searchResults: [BusinessSite] = []
+  var searchResults: [BussinessLocation] = []
   let tableView = UITableView()
   lazy var searchBar = makeSearchBar()
   

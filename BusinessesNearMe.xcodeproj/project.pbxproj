@@ -18,7 +18,8 @@
 		4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */; };
 		4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F082649CA9E00ADD4AA /* CellId.swift */; };
 		4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */; };
-		5C24121E4C861A9ABA16EF26 /* Pods_BusinessesNearMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0A529D3389A175CD1BC6F9 /* Pods_BusinessesNearMe.framework */; };
+		4C878F10264A632800ADD4AA /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F0F264A632800ADD4AA /* YelpAPI.swift */; };
+		4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +36,8 @@
 		4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4C878F082649CA9E00ADD4AA /* CellId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellId.swift; sourceTree = "<group>"; };
 		4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMapViewModel.swift; sourceTree = "<group>"; };
-		51F09800BB1A798841B46ECA /* Pods-BusinessesNearMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessesNearMe.release.xcconfig"; path = "Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe.release.xcconfig"; sourceTree = "<group>"; };
-		7F0A529D3389A175CD1BC6F9 /* Pods_BusinessesNearMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessesNearMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F179584B3F6F545ECF5AA8F2 /* Pods-BusinessesNearMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessesNearMe.debug.xcconfig"; path = "Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe.debug.xcconfig"; sourceTree = "<group>"; };
+		4C878F0F264A632800ADD4AA /* YelpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
+		4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+CustomAttributes.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C24121E4C861A9ABA16EF26 /* Pods_BusinessesNearMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +54,6 @@
 		4521DE76ACBA3FE30967FCCB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F179584B3F6F545ECF5AA8F2 /* Pods-BusinessesNearMe.debug.xcconfig */,
-				51F09800BB1A798841B46ECA /* Pods-BusinessesNearMe.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -64,10 +61,10 @@
 		4C878EDA2649946200ADD4AA = {
 			isa = PBXGroup;
 			children = (
+				4C878F0E264A631A00ADD4AA /* Service */,
 				4C878EE52649946200ADD4AA /* BusinessesNearMe */,
 				4C878EE42649946200ADD4AA /* Products */,
 				4521DE76ACBA3FE30967FCCB /* Pods */,
-				F66CA38CDB4ED00F23221C16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */,
+				4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,12 +136,12 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		F66CA38CDB4ED00F23221C16 /* Frameworks */ = {
+		4C878F0E264A631A00ADD4AA /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				7F0A529D3389A175CD1BC6F9 /* Pods_BusinessesNearMe.framework */,
+				4C878F0F264A632800ADD4AA /* YelpAPI.swift */,
 			);
-			name = Frameworks;
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,11 +151,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C878EF72649946600ADD4AA /* Build configuration list for PBXNativeTarget "BusinessesNearMe" */;
 			buildPhases = (
-				F4CC1077887B9A79C5875E29 /* [CP] Check Pods Manifest.lock */,
 				4C878EDF2649946200ADD4AA /* Sources */,
 				4C878EE02649946200ADD4AA /* Frameworks */,
 				4C878EE12649946200ADD4AA /* Resources */,
-				B35C2BE85D9B7B3AC868D4A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,48 +208,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		B35C2BE85D9B7B3AC868D4A0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BusinessesNearMe/Pods-BusinessesNearMe-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F4CC1077887B9A79C5875E29 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BusinessesNearMe-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4C878EDF2649946200ADD4AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -263,7 +217,9 @@
 				4C878EEB2649946200ADD4AA /* SearchViewController.swift in Sources */,
 				4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */,
 				4C878EFD2649C4D500ADD4AA /* BaseViewController.swift in Sources */,
+				4C878F10264A632800ADD4AA /* YelpAPI.swift in Sources */,
 				4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */,
+				4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */,
 				4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */,
 				4C878F012649C70200ADD4AA /* BusinessSite.swift in Sources */,
 				4C878EFB2649978400ADD4AA /* MapViewController.swift in Sources */,
@@ -403,7 +359,6 @@
 		};
 		4C878EF82649946600ADD4AA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F179584B3F6F545ECF5AA8F2 /* Pods-BusinessesNearMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -423,7 +378,6 @@
 		};
 		4C878EF92649946600ADD4AA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51F09800BB1A798841B46ECA /* Pods-BusinessesNearMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
