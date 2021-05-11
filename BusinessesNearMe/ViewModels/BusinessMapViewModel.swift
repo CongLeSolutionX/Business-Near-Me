@@ -7,36 +7,23 @@
 import Foundation
 import MapKit
 
-public class BusinessMapViewModel: NSObject {
+public class BusinessMapViewModel {
+  private let service: NetworkService
+  private var businesses: [Business] = []
   
-  // MARK: - Properties
-  public let coordinate: CLLocationCoordinate2D
-  public let name: String
-  public let rating: Double
-  public let image: UIImage
-  public let ratingDescription: String
-  
-  // MARK: - Object Lifecycle
-  public init(coordinate: CLLocationCoordinate2D,
-              name: String,
-              rating: Double,
-              image: UIImage) {
-    self.coordinate = coordinate
-    self.name = name
-    self.rating = rating
-    self.image = image
-    self.ratingDescription = "\(rating) starts"
-  }
-}
-
-// MARK: - MKAnnotation
-extension BusinessMapViewModel: MKAnnotation {
-  
-  public var title: String? {
-    return name
+  init(service: NetworkService = NetworkService()) {
+    self.service = service
   }
   
-  public var subtitle: String? {
-    return ratingDescription
+  func fetchYelpBusinesses(latitude: Double, longitude: Double) {
+   // get the business around the current user's location
+    service.fetchBusinesses(latitude: latitude, longitude: longitude) { result in
+      switch result {
+      case .success(let businessReceived):
+        self.businesses = businessReceived.businesses ?? []
+      case .failure(let error):
+        print("Failed to get data from Yelp API with error: \(error.localizedDescription)")
+      }
+    }
   }
 }

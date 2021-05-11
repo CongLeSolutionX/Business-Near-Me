@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,8 @@
 		4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */; };
 		4C878F10264A632800ADD4AA /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F0F264A632800ADD4AA /* YelpAPI.swift */; };
 		4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */; };
+		4C878F14264B3BAC00ADD4AA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F13264B3BAC00ADD4AA /* NetworkService.swift */; };
+		4C878F16264B3E9500ADD4AA /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F15264B3E9500ADD4AA /* ErrorDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMapViewModel.swift; sourceTree = "<group>"; };
 		4C878F0F264A632800ADD4AA /* YelpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPI.swift; sourceTree = "<group>"; };
 		4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+CustomAttributes.swift"; sourceTree = "<group>"; };
+		4C878F13264B3BAC00ADD4AA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		4C878F15264B3E9500ADD4AA /* ErrorDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				4C878F0F264A632800ADD4AA /* YelpAPI.swift */,
+				4C878F13264B3BAC00ADD4AA /* NetworkService.swift */,
+				4C878F15264B3E9500ADD4AA /* ErrorDescription.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -217,12 +223,14 @@
 				4C878EEB2649946200ADD4AA /* SearchViewController.swift in Sources */,
 				4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */,
 				4C878EFD2649C4D500ADD4AA /* BaseViewController.swift in Sources */,
+				4C878F16264B3E9500ADD4AA /* ErrorDescription.swift in Sources */,
 				4C878F10264A632800ADD4AA /* YelpAPI.swift in Sources */,
 				4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */,
 				4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */,
 				4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */,
 				4C878F012649C70200ADD4AA /* BusinessSite.swift in Sources */,
 				4C878EFB2649978400ADD4AA /* MapViewController.swift in Sources */,
+				4C878F14264B3BAC00ADD4AA /* NetworkService.swift in Sources */,
 				4C878EE72649946200ADD4AA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

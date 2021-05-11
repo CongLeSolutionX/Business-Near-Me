@@ -11,7 +11,8 @@ import CoreLocation
 
 class MapViewController: BaseViewController {
   lazy var headerTitle = makeHeaderTitle()
-  private var businesses: [Business] = []
+  var businessMapViewModel = BusinessMapViewModel()
+  
   private var locationManager = CLLocationManager()
   
   lazy var mapView:MKMapView = {
@@ -121,7 +122,9 @@ extension MapViewController: MKMapViewDelegate {
     let region = MKCoordinateRegion(center: coordinate, span: span)
     mapView.setRegion(region, animated: true)
     
-   fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    // Pass the coordiate of the current user's location and get the
+    businessMapViewModel.fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    
     // Set up the drop pin
     let annotation = MKPointAnnotation()
     annotation.coordinate = coordinate
@@ -129,63 +132,17 @@ extension MapViewController: MKMapViewDelegate {
     annotation.subtitle = "Current location"
     mapView.addAnnotation(annotation)
   }
-  
-  func fetchYelpBusinesses(latitude: Double, longitude: Double) {
-   
-  
-    let apikey = "uKD9DAyCNSie9pqJ77KMv7N1fRwU8B202P9ym9H1ztI3WDqGNvrfF_MkC2y9XRqiVWsWgLvjGoHOdBBn2ncKYoPFrEqRcUhEeYxWveRdUm69vZTmaya-HOe91FxZXnYx"
-    let url = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)")
-    guard let safeUrl = url else { return }
-    
-    var requestUrl = URLRequest(url: safeUrl)
-    
-    requestUrl.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
-    requestUrl.httpMethod = "GET"
-    let session = URLSession.shared
-    
-    let task = session.dataTask(with: requestUrl) { [weak self] (dataReceived, response, error) in
-      if let error = error {
-        print("Handling error: \(error.localizedDescription)")
-        return
-      }
-      
-      if let httpResponse = response as? HTTPURLResponse,
-         !(200...299).contains(httpResponse.statusCode) {
-        print("Handling http response error code")
-      }
-      
-      if let data = dataReceived {
-        do {
-          let result = try JSONDecoder().decode(BussinessLocation.self, from: data)
-          print(result.businesses?.count)
-        } catch (let error) {
-          print("Handling error \(error.localizedDescription)")
-        }
-      }
-    }
-    
-    task.resume()
-  }
- 
-  
-  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let viewModel = annotation as? BusinessMapViewModel else {
-      return nil
-    }
-    let identifier = "businessLocation"
-    let annotationView: MKAnnotationView
-    
-    if let existingView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)  {
-      annotationView = existingView
-    } else {
-      annotationView = MKAnnotationView(annotation: viewModel, reuseIdentifier: identifier)
-    }
-    
-    annotationView.image = viewModel.image
-    annotationView.canShowCallout = true
-    
-    return annotationView
-  }
+//
+//  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//    guard let viewModel = annotation as? BusinessMapViewModel else {
+//      return nil
+//    }
+//    let identifier = "businessLocation"
+//    let annotationView: MKAnnotationView
+//    annotationView.canShowCallout = true
+//
+//    return annotationView
+//  }
 }
 
 
