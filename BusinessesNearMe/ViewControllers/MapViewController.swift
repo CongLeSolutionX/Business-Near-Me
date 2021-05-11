@@ -47,17 +47,7 @@ extension MapViewController: CLLocationManagerDelegate {
     // Set up the map view
     guard let location = locations.last else { return }
     let centerPoint = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-    let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    
-    let region = MKCoordinateRegion(center: centerPoint, span: span)
-    mapView.setRegion(region, animated: true)
-    
-    // Set up the drop pin
-    let annotation = MKPointAnnotation()
-    annotation.coordinate = centerPoint
-    annotation.title = "Cong Le"
-    annotation.subtitle = "Current location"
-    mapView.addAnnotation(annotation)
+    centerMap(on: centerPoint)
   }
   
   
@@ -121,7 +111,29 @@ extension MapViewController {
   }
 }
 
-// MARK: MKMapViewDelegate 
+// MARK: MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+    centerMap(on: userLocation.coordinate)
+  }
   
+  private func centerMap(on coordinate: CLLocationCoordinate2D) {
+    let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    
+    let region = MKCoordinateRegion(center: coordinate, span: span)
+    mapView.setRegion(region, animated: true)
+    
+    searchForBusinesses()
+    
+    // Set up the drop pin
+    let annotation = MKPointAnnotation()
+    annotation.coordinate = coordinate
+    annotation.title = "Cong Le"
+    annotation.subtitle = "Current location"
+    mapView.addAnnotation(annotation)
+  }
+  
+  private func searchForBusinesses() {
+    
+  }
 }
