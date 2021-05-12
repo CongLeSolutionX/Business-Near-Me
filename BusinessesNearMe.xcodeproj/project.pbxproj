@@ -13,7 +13,6 @@
 		4C878EF32649946600ADD4AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C878EF12649946600ADD4AA /* LaunchScreen.storyboard */; };
 		4C878EFB2649978400ADD4AA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878EFA2649978400ADD4AA /* MapViewController.swift */; };
 		4C878EFD2649C4D500ADD4AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878EFC2649C4D500ADD4AA /* BaseViewController.swift */; };
-		4C878EFF2649C61600ADD4AA /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878EFE2649C61600ADD4AA /* BusinessCell.swift */; };
 		4C878F012649C70200ADD4AA /* BusinessSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F002649C70200ADD4AA /* BusinessSite.swift */; };
 		4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */; };
 		4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F082649CA9E00ADD4AA /* CellId.swift */; };
@@ -22,6 +21,8 @@
 		4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */; };
 		4C878F14264B3BAC00ADD4AA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F13264B3BAC00ADD4AA /* NetworkService.swift */; };
 		4C878F16264B3E9500ADD4AA /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F15264B3E9500ADD4AA /* ErrorDescription.swift */; };
+		4C878F1A264B7BD100ADD4AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */; };
+		4C878F1C264B831400ADD4AA /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,6 @@
 		4C878EF42649946600ADD4AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C878EFA2649978400ADD4AA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4C878EFC2649C4D500ADD4AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		4C878EFE2649C61600ADD4AA /* BusinessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		4C878F002649C70200ADD4AA /* BusinessSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSite.swift; sourceTree = "<group>"; };
 		4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4C878F082649CA9E00ADD4AA /* CellId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellId.swift; sourceTree = "<group>"; };
@@ -42,6 +42,8 @@
 		4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+CustomAttributes.swift"; sourceTree = "<group>"; };
 		4C878F13264B3BAC00ADD4AA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4C878F15264B3E9500ADD4AA /* ErrorDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescription.swift; sourceTree = "<group>"; };
+		4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +128,8 @@
 		4C878F072649CA2200ADD4AA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4C878EFE2649C61600ADD4AA /* BusinessCell.swift */,
 				4C878F082649CA9E00ADD4AA /* CellId.swift */,
+				4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */,
+				4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -219,14 +222,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C878EFF2649C61600ADD4AA /* BusinessCell.swift in Sources */,
 				4C878EEB2649946200ADD4AA /* SearchViewController.swift in Sources */,
 				4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */,
 				4C878EFD2649C4D500ADD4AA /* BaseViewController.swift in Sources */,
 				4C878F16264B3E9500ADD4AA /* ErrorDescription.swift in Sources */,
+				4C878F1C264B831400ADD4AA /* BusinessTableViewCell.swift in Sources */,
 				4C878F10264A632800ADD4AA /* YelpAPI.swift in Sources */,
 				4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */,
 				4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */,
+				4C878F1A264B7BD100ADD4AA /* SearchViewModel.swift in Sources */,
 				4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */,
 				4C878F012649C70200ADD4AA /* BusinessSite.swift in Sources */,
 				4C878EFB2649978400ADD4AA /* MapViewController.swift in Sources */,

@@ -6,5 +6,5 @@
 //
 
 enum CellID {
-    static let businessCell = "BusinessCell"
+    static let businessCellId = "BusinessCellId"
 }
