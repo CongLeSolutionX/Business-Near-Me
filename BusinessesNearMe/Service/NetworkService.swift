@@ -52,5 +52,4 @@ class NetworkService: YelpBusinessService {
     }
     task.resume()
   }
-  
 }

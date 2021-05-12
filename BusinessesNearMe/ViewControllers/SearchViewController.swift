@@ -80,6 +80,7 @@ extension SearchViewController: UISearchBarDelegate {
     guard let searchTerm = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
     search(searchTerm)
   }
+  
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     guard let searchTerm = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
     search(searchTerm)
@@ -101,10 +102,9 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    guard let cell = tableView.cellForRow(at: indexPath) as? BusinessTableViewCell else { return }
+    print("You tapped cell number \(indexPath.section).")
   }
 }
-
 
 //MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
@@ -117,7 +117,11 @@ extension SearchViewController: UITableViewDataSource {
             as? BusinessTableViewCell else {
       fatalError("Cannot dequeue cell")
     }
+    // Get data for each cell
     cell.searchBusinessInfoViewModel = searchViewModel.infoBusinessViewModel(for: indexPath.row)
+    
+    // animate each cell from the left
+    cell.slideOutFromLeft()
     return cell
   }
 }

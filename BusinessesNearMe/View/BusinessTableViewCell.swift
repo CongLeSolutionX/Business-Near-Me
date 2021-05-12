@@ -16,6 +16,13 @@ class BusinessTableViewCell: UITableViewCell {
     return label
   }()
   
+  lazy var addressLabel: UILabel = {
+    let label = UILabel()
+    label.textColor = .black
+    label.font = UIFont.italicSystemFont(ofSize: 12)
+    return label
+  }()
+  
   lazy var labelContainer: UIView = {
     return UIView()
   }()
@@ -42,11 +49,11 @@ class BusinessTableViewCell: UITableViewCell {
   func bindData() {
     guard let searchBusinessInfoVM = searchBusinessInfoViewModel else {
       businessNameLabel.text = nil
+      addressLabel.text = nil
       return
     }
-    
     businessNameLabel.text = searchBusinessInfoVM.name
-   
+    addressLabel.text = searchBusinessInfoVM.address
   }
 }
 
@@ -55,22 +62,30 @@ extension BusinessTableViewCell {
   func addUIElements() {
     contentView.addSubview(labelContainer)
     labelContainer.addSubview(businessNameLabel)
+    labelContainer.addSubview(addressLabel)
+    
     setBusinessNameLabelConstraints()
   }
   
   func setBusinessNameLabelConstraints() {
     labelContainer.translatesAutoresizingMaskIntoConstraints = false
     businessNameLabel.translatesAutoresizingMaskIntoConstraints = false
+    addressLabel.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
-      // Set constraints for Business Name Label
-      businessNameLabel.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor, constant: 0),
-      businessNameLabel.trailingAnchor.constraint(equalTo: labelContainer.trailingAnchor, constant: 0),
-      businessNameLabel.topAnchor.constraint(equalTo: labelContainer.topAnchor, constant: 0),
+      // Set constraints for business name Label
+      businessNameLabel.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor),
+      businessNameLabel.trailingAnchor.constraint(equalTo: labelContainer.trailingAnchor),
+      businessNameLabel.topAnchor.constraint(equalTo: labelContainer.topAnchor),
+      
+      // Set constraints for address label
+      addressLabel.topAnchor.constraint(equalTo: businessNameLabel.bottomAnchor),
+      addressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+      addressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
       
       // Set Label Container Constraints
-      labelContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      labelContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      labelContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      labelContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10),
       labelContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
     ])
   }

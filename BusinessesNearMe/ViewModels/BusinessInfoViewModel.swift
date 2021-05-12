@@ -35,4 +35,8 @@ class BusinessInfoViewModel {
   var longitude: Double? {
     return businessInfo.coordinates?.longitude
   }
+  
+  var address: String? {
+    return businessInfo.location?.address1
+  }
 }

@@ -25,6 +25,7 @@
 		4C878F1C264B831400ADD4AA /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */; };
 		4C878F1E264B9EE300ADD4AA /* BusinessSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1D264B9EE300ADD4AA /* BusinessSearchService.swift */; };
 		4C878F20264BCDCD00ADD4AA /* BusinessInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */; };
+		4C878F22264BD84500ADD4AA /* UITableViewCell+SlideInFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F21264BD84500ADD4AA /* UITableViewCell+SlideInFromLeft.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		4C878F1D264B9EE300ADD4AA /* BusinessSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSearchService.swift; sourceTree = "<group>"; };
 		4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoViewModel.swift; sourceTree = "<group>"; };
+		4C878F21264BD84500ADD4AA /* UITableViewCell+SlideInFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+SlideInFromLeft.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +73,9 @@
 		4C878EDA2649946200ADD4AA = {
 			isa = PBXGroup;
 			children = (
-				4C878F0E264A631A00ADD4AA /* Service */,
 				4C878EE52649946200ADD4AA /* BusinessesNearMe */,
-				4C878EE42649946200ADD4AA /* Products */,
 				4521DE76ACBA3FE30967FCCB /* Pods */,
+				4C878EE42649946200ADD4AA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +90,7 @@
 		4C878EE52649946200ADD4AA /* BusinessesNearMe */ = {
 			isa = PBXGroup;
 			children = (
+				4C878F0E264A631A00ADD4AA /* Service */,
 				4C878F0B2649FF2300ADD4AA /* ViewModels */,
 				4C878F072649CA2200ADD4AA /* View */,
 				4C878F062649CA0500ADD4AA /* Models */,
@@ -107,6 +109,7 @@
 			children = (
 				4C878F032649C7A000ADD4AA /* UIView+Constraints.swift */,
 				4C878F11264AEF9800ADD4AA /* UILabel+CustomAttributes.swift */,
+				4C878F21264BD84500ADD4AA /* UITableViewCell+SlideInFromLeft.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -141,9 +144,9 @@
 		4C878F0B2649FF2300ADD4AA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */,
 				4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */,
 				4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */,
-				4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				4C878F0D2649FF3500ADD4AA /* BusinessMapViewModel.swift in Sources */,
 				4C878EFD2649C4D500ADD4AA /* BaseViewController.swift in Sources */,
 				4C878F16264B3E9500ADD4AA /* ErrorDescription.swift in Sources */,
+				4C878F22264BD84500ADD4AA /* UITableViewCell+SlideInFromLeft.swift in Sources */,
 				4C878F1C264B831400ADD4AA /* BusinessTableViewCell.swift in Sources */,
 				4C878F10264A632800ADD4AA /* YelpAPI.swift in Sources */,
 				4C878F042649C7A000ADD4AA /* UIView+Constraints.swift in Sources */,
