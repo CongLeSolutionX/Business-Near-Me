@@ -6,15 +6,38 @@
 //
 
 import UIKit
+import CoreLocation
+
+var currentLatitude: Double = 0.0
+var currentLongitude: Double  = 0.0
+
 
 class SearchViewController: BaseViewController {
   var searchViewModel = SearchViewModel()
-  let tableView = UITableView()
+  var timer: Timer? = nil
+  private var locationManager = CLLocationManager()
   
-  private let searchController = UISearchController(searchResultsController: nil)
+  lazy var tableView: UITableView = {
+    let tableView = UITableView()
+    // self-sizing cells
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 50.0
+    tableView.backgroundColor = .systemBackground
+    tableView.allowsSelection = true
+    return tableView
+  }()
+  
+  lazy var searchController: UISearchController = {
+    let searchController  = UISearchController(searchResultsController: nil)
+    searchController.searchBar.delegate = self
+    searchController.searchBar.placeholder = "Type a store name..."
+    searchController.obscuresBackgroundDuringPresentation = false
+    return searchController
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    determineCurrentLocation()
     setUpTableView()
     setupSearchBar()
   }
@@ -29,11 +52,7 @@ extension SearchViewController {
   
   func setupSearchBar() {
     self.title = "Search Store Near Me"
-    searchController.searchBar.delegate = self
-    searchController.searchBar.placeholder = "Type a store name..."
-    searchController.obscuresBackgroundDuringPresentation = false
     navigationItem.searchController = searchController
-    
   }
   
   func setUpTableView() {
@@ -42,14 +61,7 @@ extension SearchViewController {
     tableView.pin(to: view)
     
     tableView.delegate = self
-    //    tableView.dataSource = self
-    
-    // self-sizing cells
-    tableView.rowHeight = UITableView.automaticDimension
-    tableView.estimatedRowHeight = 50.0
-    tableView.backgroundColor = .systemBackground
-    //    tableView.separatorStyle = .none
-    //    tableView.allowsSelection = true
+    tableView.dataSource = self
     
     // get the reusable cells
     tableView.register(BusinessTableViewCell.self, forCellReuseIdentifier: CellID.businessCellId)
@@ -60,9 +72,37 @@ extension SearchViewController {
 
 // MARK: -  UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchTerm = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+    search(searchTerm)
+  }
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchTerm = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+    search(searchTerm)
+  }
   
+  func search(_ searchTerm: String) {
+    timer?.invalidate()
+    timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false,
+                                 block: { [weak self] _ in
+                                  self?.searchViewModel.getBusiness(
+                                    searchTerm: searchTerm,
+                                    latitude: currentLatitude ,
+                                    longitude: currentLongitude
+                                  )
+                                 })
+  }
   
 }
+
+// MARK: - UITableViewDelegate
+extension SearchViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let cell = tableView.cellForRow(at: indexPath) as? BusinessTableViewCell else { return }
+    
+  }
+}
+
 
 //MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
@@ -81,8 +121,47 @@ extension SearchViewController: UITableViewDataSource {
   
 }
 
-
-// MARK: - UITableViewDelegate
-extension SearchViewController: UITableViewDelegate {
+//MARK: - CLLocationManagerDelegate
+extension SearchViewController: CLLocationManagerDelegate {
   
+  func determineCurrentLocation() {
+    
+    locationManager.requestWhenInUseAuthorization()
+    // if allowed, the app will get the current location of the user
+    if CLLocationManager.locationServicesEnabled() {
+      locationManager.delegate = self
+      locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      locationManager.startUpdatingLocation()
+    }
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    // Print out the current location
+    guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+    print("locations = \(locValue.latitude) \(locValue.longitude)")
+    currentLatitude = locValue.latitude
+    currentLongitude = locValue.longitude
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    switch status {
+    case .notDetermined:
+      locationManager.requestAlwaysAuthorization()
+      break
+    case .authorizedWhenInUse:
+      locationManager.startUpdatingLocation()
+      break
+    case .authorizedAlways:
+      locationManager.startUpdatingLocation()
+      break
+    case .restricted:
+      // restricted by parental controls. User can't enable Location Services
+      break
+    case .denied:
+      // user denied your app access to Location Services, but can grant access from Settings
+      break
+    default:
+      break
+    }
+  }
 }

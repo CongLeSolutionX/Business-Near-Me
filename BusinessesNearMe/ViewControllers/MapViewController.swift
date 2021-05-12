@@ -32,7 +32,7 @@ class MapViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupMapView()
-    determineCurrentLocation()
+    showCurrentLocation()
     setupNavBar()
     mapView.delegate = self
   }
@@ -50,46 +50,11 @@ extension MapViewController: CLLocationManagerDelegate {
     let centerPoint = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     centerMap(on: centerPoint)
   }
-
-  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print("Error - locationManager: \(error.localizedDescription)")
-  }
-  
-  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    switch status {
-    case .notDetermined:
-      locationManager.requestAlwaysAuthorization()
-      break
-    case .authorizedWhenInUse:
-      locationManager.startUpdatingLocation()
-      break
-    case .authorizedAlways:
-      locationManager.startUpdatingLocation()
-      break
-    case .restricted:
-      // restricted by e.g. parental controls. User can't enable Location Services
-      break
-    case .denied:
-      // user denied your app access to Location Services, but can grant access from Settings.app
-      break
-    default:
-      break
-    }
-  }
 }
 
 // MARK: - Helper functions
 extension MapViewController {
-  func determineCurrentLocation() {
-    
-    locationManager.requestWhenInUseAuthorization()
-    // if allowed, the app will get the current location of the user
-    if CLLocationManager.locationServicesEnabled() {
-      locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.startUpdatingLocation()
-    }
-    
+  func showCurrentLocation() {
     // Show current location on the map view
     if let coor = mapView.userLocation.location?.coordinate {
       mapView.setCenter(coor, animated: true)
@@ -105,7 +70,6 @@ extension MapViewController: MKMapViewDelegate {
       // Show business around user's current location
       self.addAnnotations()
     }
-    
   }
   
   // MARK: Helper function for MKMapView

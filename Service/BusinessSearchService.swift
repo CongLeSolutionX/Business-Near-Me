@@ -1,5 +1,5 @@
 //
-//  NetworkService.swift
+//  BusinessSearchService.swift
 //  BusinessesNearMe
 //
 //  Created by Cong Le on 5/11/21.
@@ -7,20 +7,25 @@
 
 import Foundation
 
-typealias BusinessHandler = (_ result: Result<BussinessLocation, ErrorDescription>) -> Void
+typealias SearchCompletionHandler = (_ result: Result<[Business], ErrorDescription>) -> Void
 
-protocol YelpBusinessService: AnyObject {
-  func fetchBusinesses(latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler)
+protocol SearchService {
+  func getBusinesses(searchTerm: String, latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler)
 }
 
-class NetworkService: YelpBusinessService {
+class BusinessSearchService: SearchService {
   
-  func fetchBusinesses(latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler) {
+  
+  func getBusinesses(searchTerm: String, latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler) {
+    guard !searchTerm.isEmpty,
+          let url = URL(string: "https://api.yelp.com/v3/businesses/search?text=\(searchTerm)&latitude=\(latitude)&longitude=\(longitude)&limit=25")
+    else {
+      completionHandler(.failure(.init(errorDescription: "This is not a good URL link")))
+      return
+    }
+   
     
-    let url = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=25")
-    guard let safeUrl = url else { return }
-    
-    var requestUrl = URLRequest(url: safeUrl)
+    var requestUrl = URLRequest(url: url)
     
     requestUrl.setValue("Bearer \(yelpAPIKey)", forHTTPHeaderField: "Authorization")
     requestUrl.httpMethod = "GET"
@@ -52,5 +57,4 @@ class NetworkService: YelpBusinessService {
     }
     task.resume()
   }
-  
 }
