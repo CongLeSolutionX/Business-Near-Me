@@ -22,6 +22,7 @@ class SearchViewModel {
       switch result {
       case .success(let dataReceived):
         self.businesses = dataReceived.businesses ?? []
+        print(dataReceived)
       case .failure(let error):
         print("Failed to get data from Yelp API with error: \(error.localizedDescription)")
       }

@@ -1,6 +1,8 @@
 # Business-Near-Me
 This Swift app follow MVVM architectural pattern, use Yelp API 3.0, MapKit, no Storyboard, and more.
 
+Please check this link for my demo video on how to run the app: https://drive.google.com/file/d/1Lxr7DAeLWbYbxjH77gVFrtQ5-lUAaSCQ/view?usp=sharing 
+
 Step to run this app:
 1. Clone this repo
 2. Open this project in XCode
@@ -11,3 +13,5 @@ Step to run this app:
 7. Click on  the Map View scene, you should see the current user's location and businesses around at location on the map view .
 
 Note: If you receive status code 429 from Yelp API, you are sending too much requests. Please try again the next day.
+
+
