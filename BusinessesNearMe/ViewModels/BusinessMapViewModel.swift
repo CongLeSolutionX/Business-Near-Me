@@ -10,7 +10,7 @@ import MapKit
 public class BusinessMapViewModel {
   private let service: NetworkService
   private var businesses: [Business] = []
-  
+
   init(service: NetworkService = NetworkService()) {
     self.service = service
   }
@@ -33,6 +33,11 @@ extension BusinessMapViewModel {
 
 // MARK: - Helper functions to access data
 extension BusinessMapViewModel {
+  
+  func getBusinesses() -> [Business] {
+    return businesses
+  }
+  
   func getBusinessTitle(_ index: Int) -> String {
     return businesses[index].name ?? "This business does not have a name"
   }

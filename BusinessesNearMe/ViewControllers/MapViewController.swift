@@ -109,8 +109,8 @@ extension MapViewController: MKMapViewDelegate {
     let region = MKCoordinateRegion(center: coordinate, span: span)
     mapView.setRegion(region, animated: true)
     
-    // Pass the coordiate of the current user's location and get the
-    businessMapViewModel.fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    // Pass the coordiate of the current user's location and fetch the data from Yelp API
+    self.businessMapViewModel.fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
     
     // Set up the drop pin for current user's location
     let annotation = MKPointAnnotation()
@@ -118,23 +118,52 @@ extension MapViewController: MKMapViewDelegate {
     annotation.title = "Cong Le"
     annotation.subtitle = "Current location"
     mapView.addAnnotation(annotation)
+    
+    DispatchQueue.main.async {
+      self.addAnnotations()
+    }
+    
   }
-
+  
+  func addAnnotations() {
+    for store in businessMapViewModel.getBusinesses() {
+      guard let storeCoordinate = store.coordinates else {
+        continue
+      }
+      
+      let coordinate = CLLocationCoordinate2D(
+        latitude: storeCoordinate.latitude ?? 0.0,
+        longitude: storeCoordinate.longitude ?? 0.0
+      )
+   
+      let annotation = MKPointAnnotation()
+      annotation.title = store.name
+      annotation.coordinate = coordinate
+  
+      mapView.addAnnotation(annotation)
+    }
+  }
+  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let viewModel = annotation as? BusinessMapViewModel else {
       return nil
     }
+    
+ 
     let identifier = "businessLocation"
     let annotationView: MKAnnotationView
     
     if let existingView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
       annotationView = existingView
     } else {
-      annotationView = MKAnnotationView(annotation: viewModel as! MKAnnotation, reuseIdentifier: identifier)
+      annotationView = MKAnnotationView(annotation: viewModel as? MKAnnotation, reuseIdentifier: identifier)
     }
     
+    annotationView.canShowCallout = true
+    annotationView.image = UIImage(named: "great")!
     return annotationView
   }
+  
 }
 
 

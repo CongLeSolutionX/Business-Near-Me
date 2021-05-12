@@ -7,48 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1FD6A525-448F-49ED-BCC6-2E7F47F63BD9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Service/NetworkService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "fetchBusinesses(latitude:longitude:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "369FE71F-B047-429C-A1EE-7168F1D7C5FF"
+            uuid = "519D6981-44C1-49AD-8D5A-5B18FF3499DF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BusinessesNearMe/ViewControllers/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "centerMap(on:)"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "addAnnotations()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CEC6AC11-8F7A-49D5-9461-35CA4A4923A3"
+            uuid = "4DF21722-CD2A-4C16-9BE0-35C7CAEB3ACB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Service/NetworkService.swift"
+            filePath = "BusinessesNearMe/ViewControllers/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "fetchBusinesses(latitude:longitude:completionHandler:)"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "addAnnotations()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
