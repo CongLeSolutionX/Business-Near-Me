@@ -20,6 +20,7 @@ class MapViewController: BaseViewController {
     mapView.mapType = .standard
     mapView.isZoomEnabled = true
     mapView.isScrollEnabled = true
+    mapView.showsUserLocation = true
     return mapView
   }()
   
@@ -112,14 +113,9 @@ extension MapViewController: MKMapViewDelegate {
     // Pass the coordiate of the current user's location and fetch the data from Yelp API
     self.businessMapViewModel.fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
     
-    // Set up the drop pin for current user's location
-    let annotation = MKPointAnnotation()
-    annotation.coordinate = coordinate
-    annotation.title = "Cong Le"
-    annotation.subtitle = "Current location"
-    mapView.addAnnotation(annotation)
-    
+   
     DispatchQueue.main.async {
+      // Show business around user's current location
       self.addAnnotations()
     }
     
@@ -143,27 +139,6 @@ extension MapViewController: MKMapViewDelegate {
       mapView.addAnnotation(annotation)
     }
   }
-  
-  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let viewModel = annotation as? BusinessMapViewModel else {
-      return nil
-    }
-    
- 
-    let identifier = "businessLocation"
-    let annotationView: MKAnnotationView
-    
-    if let existingView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-      annotationView = existingView
-    } else {
-      annotationView = MKAnnotationView(annotation: viewModel as? MKAnnotation, reuseIdentifier: identifier)
-    }
-    
-    annotationView.canShowCallout = true
-    annotationView.image = UIImage(named: "great")!
-    return annotationView
-  }
-  
 }
 
 
