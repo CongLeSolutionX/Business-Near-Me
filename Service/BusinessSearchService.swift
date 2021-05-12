@@ -16,6 +16,7 @@ protocol SearchService {
 class BusinessSearchService: SearchService {
   
   func getBusinesses(searchTerm: String, latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler) {
+    
     guard !searchTerm.isEmpty,
           let url = URL(string: "https://api.yelp.com/v3/businesses/search?text=\(searchTerm)&latitude=\(latitude)&longitude=\(longitude)&limit=25")
     else {

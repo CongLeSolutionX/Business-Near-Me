@@ -16,7 +16,7 @@ protocol YelpBusinessService: AnyObject {
 class NetworkService: YelpBusinessService {
   
   func fetchBusinesses(latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler) {
-    
+    // Set the limit to 25 items to avoid hitting request limit
     let url = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=25")
     guard let safeUrl = url else { return }
     
