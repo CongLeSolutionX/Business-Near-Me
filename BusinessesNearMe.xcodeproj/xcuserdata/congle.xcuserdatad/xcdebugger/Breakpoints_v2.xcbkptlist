@@ -3,4 +3,69 @@
    uuid = "B62392A5-FF60-4B87-B163-6DF02C4D9E69"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F38330BB-1F88-485C-B685-AE3C742D57B1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BusinessesNearMe/ViewControllers/SearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "setUpTableView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F38330BB-1F88-485C-B685-AE3C742D57B1 - d6d2b19373fa5c5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BusinessesNearMe.SearchViewController.setUpTableView() -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/BusinessesNearMe/ViewControllers/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "1032">
+               </Location>
+               <Location
+                  uuid = "F38330BB-1F88-485C-B685-AE3C742D57B1 - b4d2d13e94557546"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in BusinessesNearMe.SearchViewController.setUpTableView() -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/BusinessesNearMe/ViewControllers/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  uuid = "F38330BB-1F88-485C-B685-AE3C742D57B1 - b88b43d888f949d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in BusinessesNearMe.SearchViewController.setUpTableView() -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/BusinessesNearMe/ViewControllers/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "45">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

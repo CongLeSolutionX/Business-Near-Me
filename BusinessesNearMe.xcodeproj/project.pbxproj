@@ -24,6 +24,7 @@
 		4C878F1A264B7BD100ADD4AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */; };
 		4C878F1C264B831400ADD4AA /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */; };
 		4C878F1E264B9EE300ADD4AA /* BusinessSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1D264B9EE300ADD4AA /* BusinessSearchService.swift */; };
+		4C878F20264BCDCD00ADD4AA /* BusinessInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		4C878F1B264B831400ADD4AA /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		4C878F1D264B9EE300ADD4AA /* BusinessSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSearchService.swift; sourceTree = "<group>"; };
+		4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				4C878F0C2649FF3500ADD4AA /* BusinessMapViewModel.swift */,
 				4C878F19264B7BD100ADD4AA /* SearchViewModel.swift */,
+				4C878F1F264BCDCD00ADD4AA /* BusinessInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				4C878F12264AEF9800ADD4AA /* UILabel+CustomAttributes.swift in Sources */,
 				4C878F1E264B9EE300ADD4AA /* BusinessSearchService.swift in Sources */,
 				4C878F1A264B7BD100ADD4AA /* SearchViewModel.swift in Sources */,
+				4C878F20264BCDCD00ADD4AA /* BusinessInfoViewModel.swift in Sources */,
 				4C878F092649CA9E00ADD4AA /* CellId.swift in Sources */,
 				4C878F012649C70200ADD4AA /* BusinessSite.swift in Sources */,
 				4C878EFB2649978400ADD4AA /* MapViewController.swift in Sources */,

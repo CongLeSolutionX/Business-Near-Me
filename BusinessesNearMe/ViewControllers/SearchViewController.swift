@@ -66,7 +66,11 @@ extension SearchViewController {
     
     // get the reusable cells
     tableView.register(BusinessTableViewCell.self, forCellReuseIdentifier: CellID.businessCellId)
-    
+    searchViewModel.updateView = { [weak self] in
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
+    }
   }
 }
 
@@ -97,7 +101,7 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let cell = tableView.cellForRow(at: indexPath) as? BusinessTableViewCell else { return }
+//    guard let cell = tableView.cellForRow(at: indexPath) as? BusinessTableViewCell else { return }
   }
 }
 
@@ -105,7 +109,7 @@ extension SearchViewController: UITableViewDelegate {
 //MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return searchViewModel.numberBusinessesFound
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,6 +117,7 @@ extension SearchViewController: UITableViewDataSource {
             as? BusinessTableViewCell else {
       fatalError("Cannot dequeue cell")
     }
+    cell.searchBusinessInfoViewModel = searchViewModel.infoBusinessViewModel(for: indexPath.row)
     return cell
   }
 }
