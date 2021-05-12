@@ -7,65 +7,129 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "664EE984-FAD8-4ACD-8467-B43582CBC626"
+            uuid = "1E9B8100-96FA-46B3-8FE0-1605AE220433"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BusinessesNearMe/ViewControllers/SearchViewController.swift"
+            filePath = "BusinessesNearMe/ViewModels/SearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "search(_:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getBusiness(searchTerm:latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DB675057-4459-43BC-97D8-EBFC7D1CEAEE"
+            uuid = "5DF7C503-33A1-43AD-A1D7-30B2208819ED"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BusinessesNearMe/ViewControllers/SearchViewController.swift"
+            filePath = "BusinessesNearMe/ViewModels/SearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "getBusiness(searchTerm:latitude:longitude:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5DF7C503-33A1-43AD-A1D7-30B2208819ED - 4507583704cb19c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BusinessesNearMe.SearchViewModel.getBusiness(searchTerm: Swift.String, latitude: Swift.Double, longitude: Swift.Double) -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/BusinessesNearMe/ViewModels/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "66">
+               </Location>
+               <Location
+                  uuid = "5DF7C503-33A1-43AD-A1D7-30B2208819ED - 7f50efa363e20f32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;BusinessesNearMe.BussinessLocation, BusinessesNearMe.ErrorDescription&gt;) -&gt; () in BusinessesNearMe.SearchViewModel.getBusiness(searchTerm: Swift.String, latitude: Swift.Double, longitude: Swift.Double) -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/BusinessesNearMe/ViewModels/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "149">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FF5320E-B41F-49FF-87EB-6AC3C91F5D49"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Service/BusinessSearchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "getBusinesses(searchTerm:latitude:longitude:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FD2E295F-C1F8-4DD7-A234-F22A4DCC91C6"
+            uuid = "F46264BB-27CC-4343-840D-F62044330AED"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BusinessesNearMe/ViewControllers/SearchViewController.swift"
+            filePath = "Service/BusinessSearchService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getBusinesses(searchTerm:latitude:longitude:completionHandler:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "251720C5-855D-493E-AB24-F56C25E47551"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BusinessesNearMe/ViewControllers/SearchViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "search(_:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F46264BB-27CC-4343-840D-F62044330AED - 9d42f49c71a70431"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BusinessesNearMe.BusinessSearchService.getBusinesses(searchTerm: Swift.String, latitude: Swift.Double, longitude: Swift.Double, completionHandler: (Swift.Result&lt;BusinessesNearMe.BussinessLocation, BusinessesNearMe.ErrorDescription&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/Service/BusinessSearchService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1850">
+               </Location>
+               <Location
+                  uuid = "F46264BB-27CC-4343-840D-F62044330AED - fb768603feda4fb0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BusinessesNearMe.BusinessSearchService.getBusinesses(searchTerm: Swift.String, latitude: Swift.Double, longitude: Swift.Double, completionHandler: (Swift.Result&lt;BusinessesNearMe.BussinessLocation, BusinessesNearMe.ErrorDescription&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BusinessesNearMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/congle/Desktop/DEVELOPMENTS/VORTO/Business-Near-Me/Service/BusinessSearchService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "339">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

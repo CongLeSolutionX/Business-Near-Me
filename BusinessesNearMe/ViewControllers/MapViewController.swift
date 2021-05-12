@@ -8,7 +8,6 @@
 import MapKit
 import CoreLocation
 
-
 class MapViewController: BaseViewController {
   lazy var headerTitle = makeHeaderTitle()
   var businessMapViewModel = BusinessMapViewModel()
@@ -23,7 +22,6 @@ class MapViewController: BaseViewController {
     mapView.showsUserLocation = true
     return mapView
   }()
-  
   
   override func commonInit() {
     setTabBarImage(imageName: "map", title: "Map View")

@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 
+// These values and used in seach operation
 var currentLatitude: Double = 0.0
 var currentLongitude: Double  = 0.0
 
@@ -45,8 +46,8 @@ class SearchViewController: BaseViewController {
   override func commonInit() {
     setTabBarImage(imageName: "magnifyingglass.circle", title: "Search View")
   }
-  
 }
+
 // MARK: - Setup search bar and table view
 extension SearchViewController {
   
@@ -69,7 +70,6 @@ extension SearchViewController {
   }
 }
 
-
 // MARK: -  UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -83,7 +83,7 @@ extension SearchViewController: UISearchBarDelegate {
   
   func search(_ searchTerm: String) {
     timer?.invalidate()
-    timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false,
+    timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false,
                                  block: { [weak self] _ in
                                   self?.searchViewModel.getBusiness(
                                     searchTerm: searchTerm,
@@ -92,14 +92,12 @@ extension SearchViewController: UISearchBarDelegate {
                                   )
                                  })
   }
-  
 }
 
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let cell = tableView.cellForRow(at: indexPath) as? BusinessTableViewCell else { return }
-    
   }
 }
 
@@ -115,17 +113,14 @@ extension SearchViewController: UITableViewDataSource {
             as? BusinessTableViewCell else {
       fatalError("Cannot dequeue cell")
     }
-    
     return cell
   }
-  
 }
 
-//MARK: - CLLocationManagerDelegate
-extension SearchViewController: CLLocationManagerDelegate {
+// MARK: - Helper functions
+extension SearchViewController {
   
   func determineCurrentLocation() {
-    
     locationManager.requestWhenInUseAuthorization()
     // if allowed, the app will get the current location of the user
     if CLLocationManager.locationServicesEnabled() {
@@ -134,11 +129,17 @@ extension SearchViewController: CLLocationManagerDelegate {
       locationManager.startUpdatingLocation()
     }
   }
+}
+
+//MARK: - CLLocationManagerDelegate
+extension SearchViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     // Print out the current location
     guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
     print("locations = \(locValue.latitude) \(locValue.longitude)")
+    
+    // Saving these values and used in seach operation
     currentLatitude = locValue.latitude
     currentLongitude = locValue.longitude
   }
