@@ -101,6 +101,11 @@ extension MapViewController {
 extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
     centerMap(on: userLocation.coordinate)
+    DispatchQueue.main.async {
+      // Show business around user's current location
+      self.addAnnotations()
+    }
+    
   }
   
   // MARK: Helper function for MKMapView
@@ -112,13 +117,6 @@ extension MapViewController: MKMapViewDelegate {
     
     // Pass the coordiate of the current user's location and fetch the data from Yelp API
     self.businessMapViewModel.fetchYelpBusinesses(latitude: coordinate.latitude, longitude: coordinate.longitude)
-    
-   
-    DispatchQueue.main.async {
-      // Show business around user's current location
-      self.addAnnotations()
-    }
-    
   }
   
   func addAnnotations() {
@@ -134,6 +132,7 @@ extension MapViewController: MKMapViewDelegate {
    
       let annotation = MKPointAnnotation()
       annotation.title = store.name
+      annotation.subtitle = store.location?.address1
       annotation.coordinate = coordinate
   
       mapView.addAnnotation(annotation)

@@ -16,13 +16,13 @@ protocol yelpBusinessService: AnyObject {
 class NetworkService: yelpBusinessService {
   
   func fetchBusinesses(latitude: Double, longitude: Double, completionHandler: @escaping BusinessHandler) {
-    let apikey = "uKD9DAyCNSie9pqJ77KMv7N1fRwU8B202P9ym9H1ztI3WDqGNvrfF_MkC2y9XRqiVWsWgLvjGoHOdBBn2ncKYoPFrEqRcUhEeYxWveRdUm69vZTmaya-HOe91FxZXnYx"
-    let url = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)")
+    
+    let url = URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(latitude)&longitude=\(longitude)&limit=25")
     guard let safeUrl = url else { return }
     
     var requestUrl = URLRequest(url: safeUrl)
     
-    requestUrl.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
+    requestUrl.setValue("Bearer \(yelpAPIKey)", forHTTPHeaderField: "Authorization")
     requestUrl.httpMethod = "GET"
     let session = URLSession.shared
     
@@ -49,7 +49,6 @@ class NetworkService: yelpBusinessService {
         completionHandler(.failure(.init(errorDescription: error.localizedDescription)))
         return
       }
-      
     }
     task.resume()
   }

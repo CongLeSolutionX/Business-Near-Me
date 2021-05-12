@@ -7,4 +7,4 @@
 
 import Foundation
 
-public let yelpAPIKey = "uKD9DAyCNSie9pqJ77KMv7N1fRwU8B202P9ym9H1ztI3WDqGNvrfF_MkC2y9XRqiVWsWgLvjGoHOdBBn2ncKYoPFrEqRcUhEeYxWveRdUm69vZTmaya-HOe91FxZXnYx"
+public let yelpAPIKey = "pqyY3w3hx7caR289oszBlod4YCvZa7iAVYHbOrVyq4rbOJyLLZRekRuCuBTflXtPaHpbRCiqZhnxvEgPQs5v5kOjlU4OgnUD3MT3rOVN3di3o9g4OuNp3O_LIzmbYHYx"
